@@ -25,7 +25,17 @@ if section == "1. 단어장":
         filtered_df = df
     
     # 단어 카드 반복
-    for idx, row in filtered_df.iterrows():
+
+    # 🔄 페이지네이션 추가
+    page_size = 20
+    total_pages = len(filtered_df) // page_size + (1 if len(filtered_df) % page_size else 0)
+    page = st.number_input("페이지", 1, total_pages, 1)
+
+    start_idx = (page - 1) * page_size
+    end_idx = start_idx + page_size
+    paged_df = filtered_df.iloc[start_idx:end_idx]
+
+    for idx, row in paged_df.iterrows():
         with st.expander(f"🔤 {row['Word']}"):
             # 뜻 보기 토글
             with st.container():
