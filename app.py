@@ -36,24 +36,24 @@ if section == "1. 단어장":
     paged_df = filtered_df.iloc[start_idx:end_idx]
 
     for idx, row in paged_df.iterrows():
-        with st.expander(f"🔤 {row['Word']}", expanded=True):
+        with st.expander(f"🔤 {row['Word']}"):
             # 뜻 보기 토글
             with st.container():
                 st.markdown(f"### 🔤 단어: **{row['Word']}**")
 
-                if st.toggle("🇰🇷 뜻 보기", key=f"korean_{idx}"):
+                if st.toggle("🇰🇷 뜻 보기", value=True, key=f"korean_{idx}"):
                     st.markdown(f"**🇰🇷 뜻:** {row['korean_definition']}")
 
-                if st.toggle("🇺🇸 영어 정의 보기", key=f"english_{idx}"):
+                if st.toggle("🇺🇸 영어 정의 보기", value=True, key=f"english_{idx}"):
                     st.markdown(f"**🇺🇸 영어 정의:** {row['english_definition']}")
 
-                if st.toggle("📘 해석 보기", key=f"translation_{idx}"):
+                if st.toggle("📘 해석 보기", value=True, key=f"translation_{idx}"):
                     st.markdown(f"**📘 해석:** {row['korean_translation']}")
 
-                if st.toggle("🟢 유의어 보기", key=f"synonyms_{idx}"):
+                if st.toggle("🟢 유의어 보기", value=True, key=f"synonyms_{idx}"):
                     st.markdown(f"**🟢 유의어:** {row['synonyms'] or '없음'}")
 
-                if st.toggle("🔴 반의어 보기", key=f"antonyms_{idx}"):
+                if st.toggle("🔴 반의어 보기", value=True, key=f"antonyms_{idx}"):
                     st.markdown(f"**🔴 반의어:** {row['antonyms'] or '없음'}")
 
                 if st.toggle("🎯 IELTS 점수 보기", key=f"ielts_{idx}"):
