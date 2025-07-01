@@ -36,7 +36,7 @@ if section == "1. 단어장":
     paged_df = filtered_df.iloc[start_idx:end_idx]
 
     for idx, row in paged_df.iterrows():
-        with st.expander(f"🔤 {row['Word']}"):
+        with st.expander(f"🔤 {row['Word']}", expanded=True):
             # 뜻 보기 토글
             with st.container():
                 st.markdown(f"### 🔤 단어: **{row['Word']}**")
