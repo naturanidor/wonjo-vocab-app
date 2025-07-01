@@ -27,7 +27,7 @@ if section == "1. 단어장":
     # 단어 카드 반복
 
     # 🔄 페이지네이션 추가
-    page_size = 20
+    page_size = 50
     total_pages = len(filtered_df) // page_size + (1 if len(filtered_df) % page_size else 0)
     page = st.number_input("페이지", 1, total_pages, 1)
 
